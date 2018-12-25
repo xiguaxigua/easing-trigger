@@ -63,7 +63,7 @@ const EasingTrigger = options => {
       onStep(currValue, process);
       loop(step);
     } else {
-      onStep(end, process);
+      onStep(end, 1);
       onComplete();
     }
   };
