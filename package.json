@@ -2,7 +2,7 @@
   "name": "easing-trigger",
   "version": "0.0.2",
   "description": "",
-  "main": "index.js",
+  "main": "./lib/index.umd.js",
   "scripts": {
     "dev": "parcel ./index.html",
     "build": "rm -rf lib && rollup -c rollup.config.js"
