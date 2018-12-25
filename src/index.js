@@ -1,5 +1,5 @@
 const DEFAULT_OPTIONS = {
-  type: 'easeIn',
+  type: 'linear',
   func: null,
   start: 0,
   end: null,
@@ -54,25 +54,20 @@ const EasingTrigger = options => {
   } = Object.assign({}, DEFAULT_OPTIONS, options);
   const easingFunc = func || TYPES[type];
   let time = 0;
-  let isStop = false;
   let currValue = start;
   const step = _ => {
-    if (isStop) return;
     time += TIME_INTERVAL;
-    const x = time / duration;
-    currValue = start + (end - start) * easingFunc(x);
+    const process = time / duration;
+    currValue = start + (end - start) * easingFunc(process);
     if (time <= duration) {
-      onStep(currValue, x);
+      onStep(currValue, process);
       loop(step);
     } else {
-      onStep(end, x);
+      onStep(end, process);
       onComplete();
     }
   };
   loop(step);
-  return _ => {
-    isStop = true;
-  };
 };
 
 export default EasingTrigger;
