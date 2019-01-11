@@ -24,11 +24,30 @@ EasingTrigger({
   // func: x => x, // custom easing function
   start: window.scrollY, // start value
   end: 0, // end value
-  duration: 10000, // time interval
+  duration: 200, // time interval, default 200
   // onComplete: _ => {}, // callback while complete
   onStep: function (v, x) { window.scroll(0, v) } // callback while complete
 })
 ```
+
+```js
+import EasingTrigger from 'easing-trigger'
+
+EasingTrigger({
+  type: 'easeInOutQuint', // Built-in easing function
+  // func: x => x, // custom easing function
+  start: [10, 20], // start value
+  end: [100, 200], // end value
+  duration: 200, // time interval, default 200
+  // onComplete: _ => {}, // callback while complete
+  onStep: function (a, b, x) { console.log(a, b, x) } // callback while complete
+})
+```
+
+- a: from 10 to 100
+- b: from 20 to 200
+- x: process 
+
 
 ## All Built-in easing function
 

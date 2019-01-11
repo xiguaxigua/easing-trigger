@@ -42,6 +42,8 @@ const TIME_INTERVAL = 17;
 const loop =
   window.requestAnimationFrame || (fn => setTimeout(fn, TIME_INTERVAL));
 
+const isArray = v => Object.prototype.toString.call(v) === '[object Array]';
+
 const EasingTrigger = options => {
   const {
     type,
@@ -52,18 +54,24 @@ const EasingTrigger = options => {
     onStep,
     onComplete,
   } = Object.assign({}, DEFAULT_OPTIONS, options);
+  const startList = isArray(start) ? start : [start];
+  const endList = isArray(end) ? end : [end];
   const easingFunc = func || TYPES[type];
   let time = 0;
-  let currValue = start;
+  const currValue = startList.slice();
   const step = _ => {
     time += TIME_INTERVAL;
     const process = time / duration;
-    currValue = start + (end - start) * easingFunc(process);
+    startList.forEach((_, index) => {
+      currValue[index] =
+        startList[index] +
+        (endList[index] - startList[index]) * easingFunc(process);
+    });
     if (time <= duration) {
-      onStep(currValue, process);
+      onStep.apply(null, currValue.concat(process))
       loop(step);
     } else {
-      onStep(end, 1);
+      onStep.apply(null, endList.concat(process))
       onComplete();
     }
   };
