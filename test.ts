@@ -1,37 +1,38 @@
-import EasingTrigger from './index';
-const myChart = echarts.init(document.getElementById('container'));
-const result = echarts.init(document.getElementById('result'));
+import EasingTrigger, { TypeKey } from "./index";
+const { echarts } = window as any;
+const myChart = echarts.init(document.getElementById("container"));
+const result = echarts.init(document.getElementById("result"));
 const types = [
-  'linear',
-  'easeInQuad',
-  'easeOutQuad',
-  'easeInOutQuad',
-  'easeInCubic',
-  'easeOutCubic',
-  'easeInOutCubic',
-  'easeInQuart',
-  'easeOutQuart',
-  'easeInOutQuart',
-  'easeInQuint',
-  'easeOutQuint',
-  'easeInOutQuint',
+  "linear",
+  "easeInQuad",
+  "easeOutQuad",
+  "easeInOutQuad",
+  "easeInCubic",
+  "easeOutCubic",
+  "easeInOutCubic",
+  "easeInQuart",
+  "easeOutQuart",
+  "easeInOutQuart",
+  "easeInQuint",
+  "easeOutQuint",
+  "easeInOutQuint",
 ];
 let number = 0;
 const options = {
-  legend: { data: types, selectedMode: 'single' },
-  xAxis: { type: 'value' },
-  yAxis: { type: 'value' },
+  legend: { data: types, selectedMode: "single" },
+  xAxis: { type: "value" },
+  yAxis: { type: "value" },
   grid: { top: 100 },
   series: [],
 };
 const optionsResult = {
   legend: { data: types },
-  xAxis: { type: 'value' },
-  yAxis: { type: 'value' },
+  xAxis: { type: "value" },
+  yAxis: { type: "value" },
   grid: { top: 100 },
   series: [],
 };
-types.forEach(type => {
+types.forEach((type: TypeKey) => {
   const data = [];
   EasingTrigger({
     start: 0,
@@ -48,12 +49,12 @@ types.forEach(type => {
       number++;
       options.series.push({
         name: type,
-        type: 'line',
+        type: "line",
         data,
       });
       optionsResult.series.push({
         name: type,
-        type: 'line',
+        type: "line",
         data,
       });
       if (number < types.length) return;

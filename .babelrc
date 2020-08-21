@@ -1,8 +1,12 @@
 {
   "presets": [
-    ["@babel/env", {
-      "modules": false
-    }]
+    "@babel/preset-typescript",
+    [
+      "@babel/env",
+      {
+        "modules": false
+      }
+    ]
   ],
   "plugins": ["@babel/plugin-transform-object-assign"]
 }
