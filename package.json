@@ -8,6 +8,9 @@
     "build": "rm -rf lib && rollup -c rollup.config.js",
     "prepublishOnly": "npm run build"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "types": "./index.d.ts",
   "repository": {
     "type": "git",
