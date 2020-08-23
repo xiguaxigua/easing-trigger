@@ -1,5 +1,5 @@
 /** 缓动方法名 */
-export declare enum TypeKey {
+export declare enum EasingKey {
     linear = "linear",
     easeInQuad = "easeInQuad",
     easeOutQuad = "easeOutQuad",
@@ -17,7 +17,7 @@ export declare enum TypeKey {
 /** 配置 */
 export interface Options {
     /** 缓动类型 */
-    type?: TypeKey;
+    type?: EasingKey | "string";
     /** 自定义缓动函数 */
     func?: Function;
     /** 初始值 */

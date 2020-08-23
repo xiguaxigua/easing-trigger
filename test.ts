@@ -1,4 +1,4 @@
-import EasingTrigger, { TypeKey } from "./index";
+import EasingTrigger, { EasingKey } from "./index";
 const { echarts } = window as any;
 const myChart = echarts.init(document.getElementById("container"));
 const result = echarts.init(document.getElementById("result"));
@@ -32,7 +32,7 @@ const optionsResult = {
   grid: { top: 100 },
   series: [],
 };
-types.forEach((type: TypeKey) => {
+types.forEach((type: EasingKey) => {
   const data = [];
   EasingTrigger({
     start: 0,
