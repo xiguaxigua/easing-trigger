@@ -4,7 +4,7 @@ on:
     branch: master
 
 jobs:
-  update-images:
+  public-package:
     runs-on: ubuntu-latest
     steps:
       - name: 检出
