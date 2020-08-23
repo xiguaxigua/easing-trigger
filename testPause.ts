@@ -10,7 +10,7 @@ const [pauseLoop, continueLoop] = EasingTrigger({
   type: EasingKey.linear,
   duration: 5000,
   onStep: (val) => {
-    box.style.top = `${val}px`;
+    (box as any).style.top = `${val}px`;
   },
 });
 
