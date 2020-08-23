@@ -1,8 +1,11 @@
 node_modules/
-node_modules/.bin/
+node_modules/.bin/tsc
+node_modules/.bin/tsserver
 dist
 .cache
 .babelrc
 index.html
 rollup.config.js
-.github
+.github/
+test.ts
+LICENSE
