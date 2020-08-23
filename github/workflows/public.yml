@@ -1,0 +1,20 @@
+name: 发包
+on:
+  push:
+    branch: master
+
+jobs:
+  update-images:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出
+        uses: actions/checkout@master
+
+      - name: 安装依赖
+        run: yarn
+
+      - name: 打包
+        run: node main.js
+
+      - name: 发布
+        run: npm publish
