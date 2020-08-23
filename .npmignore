@@ -8,4 +8,5 @@ index.html
 rollup.config.js
 .github/
 test.ts
+testPause.ts
 LICENSE
