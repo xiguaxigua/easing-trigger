@@ -73,11 +73,18 @@ const loop =
 /** 判断是否为数组 */
 const isArray = (v) => Object.prototype.toString.call(v) === "[object Array]";
 
+/** 暂停缓动 */
+type pauseEasing = () => void;
+/** 继续缓动 */
+type continueEasing = () => void;
+
 /**
  * 缓动函数触发器
  * @param {Options} options 配置
  */
-export default function EasingTrigger(options: Options) {
+export default function EasingTrigger(
+  options: Options
+): [pauseEasing, continueEasing] {
   // 初始化配置
   const {
     type,
@@ -99,6 +106,8 @@ export default function EasingTrigger(options: Options) {
   let time = 0;
   const currValue = startList.slice();
 
+  let runState = true;
+
   const step = () => {
     time += TIME_INTERVAL;
     const process = time / duration;
@@ -107,6 +116,7 @@ export default function EasingTrigger(options: Options) {
         startList[index] +
         (endList[index] - startList[index]) * easingFunc(process);
     });
+    if (!runState) return;
     if (time <= duration) {
       onStep.apply(null, currValue.concat(process));
       loop(step);
@@ -117,4 +127,15 @@ export default function EasingTrigger(options: Options) {
   };
 
   loop(step);
+
+  function pauseLoop() {
+    runState = false;
+  }
+
+  function continueLoop() {
+    runState = true;
+    loop(step);
+  }
+
+  return [pauseLoop, continueLoop];
 }

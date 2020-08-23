@@ -18,11 +18,27 @@
         width: 50%;
         height: 500px;
       }
+
+      .box {
+        margin: 10px;
+        width: 100px;
+        height: 100px;
+        position: relative;
+        background-color: red;
+      }
+
+      #container,
+      #result {
+        display: none;
+      }
     </style>
   </head>
   <body>
     <div id="container"></div>
     <div id="result"></div>
-    <script src="./test.ts"></script>
+    <div class="box"></div>
+    <button id="pause">暂停</button>
+    <button id="continue">继续</button>
+    <script src="./testPause.ts"></script>
   </body>
 </html>

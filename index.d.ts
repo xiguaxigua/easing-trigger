@@ -31,8 +31,13 @@ export interface Options {
     /** 缓动结束执行回调 */
     onComplete?: Function;
 }
+/** 暂停缓动 */
+declare type pauseEasing = () => void;
+/** 继续缓动 */
+declare type continueEasing = () => void;
 /**
  * 缓动函数触发器
  * @param {Options} options 配置
  */
-export default function EasingTrigger(options: Options): void;
+export default function EasingTrigger(options: Options): [pauseEasing, continueEasing];
+export {};
