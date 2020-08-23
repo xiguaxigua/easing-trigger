@@ -10,6 +10,9 @@ jobs:
       - name: 检出
         uses: actions/checkout@master
 
+      - name: 写 public key
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
+
       - name: 安装依赖
         run: yarn
 
